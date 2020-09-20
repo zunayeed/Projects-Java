@@ -1,0 +1,150 @@
+package zun.java.basics.practice3;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+
+public class SwingGUIclass {
+
+	private JFrame frmCalculator;
+	private JTextField textFieldNum1;
+	private JLabel lblMessage ;
+	private JTextField textFieldNum2;
+	private JButton btnAdd;
+	private JButton btnNewButton_1;
+	private JTextField textFieldAnswer;
+	private JButton btnMultiply;
+	private JButton btnDivision;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					SwingGUIclass window = new SwingGUIclass();
+					window.frmCalculator.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public SwingGUIclass() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmCalculator = new JFrame();
+		frmCalculator.setTitle("Calculator");
+		frmCalculator.setBounds(100, 100, 781, 467);
+		frmCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmCalculator.getContentPane().setLayout(null);
+		
+		textFieldNum1 = new JTextField();
+		textFieldNum1.setBounds(50, 30, 199, 31);
+		frmCalculator.getContentPane().add(textFieldNum1);
+		textFieldNum1.setColumns(10);
+		
+	    lblMessage = new JLabel(" Answer");
+	    lblMessage.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblMessage.setBounds(10, 351, 179, 47);
+		frmCalculator.getContentPane().add(lblMessage);
+		
+		textFieldNum2 = new JTextField();
+		textFieldNum2.setBounds(281, 27, 199, 36);
+		frmCalculator.getContentPane().add(textFieldNum2);
+		textFieldNum2.setColumns(10);
+		
+		btnAdd = new JButton("ADD ");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int num1, num2,ans;
+				try {
+					 num1 = Integer.parseInt(textFieldNum1.getText());
+					 num2 = Integer.parseInt(textFieldNum2.getText());
+					 ans = num1+num2;
+					 textFieldAnswer.setText(Integer.toString(ans));
+				} catch (Exception e2) {
+					JOptionPane.showConfirmDialog(null, "Please enter a Valid Number");
+				}
+			}
+		});
+		btnAdd.setBounds(50, 123, 141, 36);
+		frmCalculator.getContentPane().add(btnAdd);
+		
+		btnNewButton_1 = new JButton("Subtract ");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			
+				public void actionPerformed(ActionEvent e3) {
+					int num1, num2,ans;
+					try {
+						 num1 = Integer.parseInt(textFieldNum1.getText());
+						 num2 = Integer.parseInt(textFieldNum2.getText());
+						 ans = num1-num2;
+						 textFieldAnswer.setText(Integer.toString(ans));
+					} catch (Exception e2) {
+						JOptionPane.showConfirmDialog(null, "Please enter a Valid Number");
+					}
+				
+			}
+		});
+		btnNewButton_1.setBounds(239, 123, 141, 36);
+		frmCalculator.getContentPane().add(btnNewButton_1);
+		
+		textFieldAnswer = new JTextField();
+		textFieldAnswer.setBounds(239, 353, 199, 47);
+		frmCalculator.getContentPane().add(textFieldAnswer);
+		textFieldAnswer.setColumns(10);
+		
+		btnMultiply = new JButton("Multiply");
+		btnMultiply.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int num1, num2,ans;
+				try {
+					 num1 = Integer.parseInt(textFieldNum1.getText());
+					 num2 = Integer.parseInt(textFieldNum2.getText());
+					 ans = num1* num2;
+					 textFieldAnswer.setText(Integer.toString(ans));
+				} catch (Exception e2) {
+					JOptionPane.showConfirmDialog(null, "Please enter a Valid Number");
+				}
+			}
+		});
+		btnMultiply.setBounds(50, 182, 141, 36);
+		frmCalculator.getContentPane().add(btnMultiply);
+		
+		btnDivision = new JButton("Division");
+		btnDivision.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int num1, num2,ans;
+				try {
+					 num1 = Integer.parseInt(textFieldNum1.getText());
+					 num2 = Integer.parseInt(textFieldNum2.getText());
+					 ans = num1/num2;
+					 textFieldAnswer.setText(Integer.toString(ans));
+				} catch (Exception e2) {
+					JOptionPane.showConfirmDialog(null, "Please enter a Valid Number");
+				}
+			}
+		});
+		btnDivision.setBounds(239, 183, 141, 34);
+		frmCalculator.getContentPane().add(btnDivision);
+	}
+}
